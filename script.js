@@ -1,9 +1,9 @@
 // Edit profile links and placeholders here. Replace each empty URL when ready.
 const PORTFOLIO_CONFIG = {
   links: {
-    linkedin: "",
-    github: "",
-    tryhackme: "",
+    linkedin: "https://www.linkedin.com/in/mansurhussain-syed-53b5822a6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    github: "https://github.com/mansurhussain57-glitch",
+    tryhackme: "https://tryhackme.com/p/mansurhussain57",
     hackthebox: "",
     paper: "",
     webLab: "",
@@ -120,4 +120,39 @@ document.getElementById("contact-form")?.addEventListener("submit", (event) => {
   const subject = `Portfolio enquiry from ${form.get("name")}`;
   const body = `${form.get("message")}\n\nFrom: ${form.get("name")} (${form.get("email")})`;
   window.location.href = `mailto:${PORTFOLIO_CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+const certificateDialog = document.querySelector(".certificate-dialog");
+const certificateImage = certificateDialog?.querySelector(".certificate-image");
+const certificateTitle = document.getElementById("certificate-dialog-title");
+certificateDialog?.querySelector(".certificate-close")?.addEventListener("click", () => certificateDialog.close());
+document.querySelectorAll(".cert-trigger").forEach((certificate) => {
+  certificate.addEventListener("click", () => {
+    const title = certificate.querySelector(".cert-title").textContent;
+    certificateTitle.textContent = title;
+    certificateImage.src = certificate.dataset.certificateImage;
+    certificateImage.alt = `${title} certificate`;
+    certificateDialog.showModal();
+  });
+});
+certificateDialog?.addEventListener("click", (event) => {
+  if (event.target === certificateDialog) certificateDialog.close();
+});
+
+const presentationDialog = document.querySelector(".presentation-dialog");
+const presentationFrame = presentationDialog?.querySelector(".presentation-frame");
+const presentationTitle = document.getElementById("presentation-dialog-title");
+const presentationDownload = presentationDialog?.querySelector(".presentation-download");
+presentationDialog?.querySelector(".certificate-close")?.addEventListener("click", () => presentationDialog.close());
+presentationDialog?.addEventListener("close", () => presentationFrame.removeAttribute("src"));
+document.querySelectorAll(".presentation-trigger").forEach((presentation) => {
+  presentation.addEventListener("click", () => {
+    presentationTitle.textContent = presentation.dataset.presentationTitle;
+    presentationFrame.src = presentation.dataset.presentationPdf;
+    presentationDownload.href = presentation.dataset.presentationPptx;
+    presentationDialog.showModal();
+  });
+});
+presentationDialog?.addEventListener("click", (event) => {
+  if (event.target === presentationDialog) presentationDialog.close();
 });

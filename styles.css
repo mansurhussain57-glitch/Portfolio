@@ -118,8 +118,24 @@
     .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
     .cert-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
     .cert { min-height: 134px; padding: 19px; }
+    .cert-trigger { display: flex; width: 100%; flex-direction: column; align-items: flex-start; text-align: left; cursor: pointer; }
     .cert-issuer { margin: 0 0 14px; color: var(--accent); font: 500 10px var(--mono); text-transform: uppercase; }
     .cert h3 { margin: 0; font: 500 13px/1.6 var(--mono); }
+    .cert-title { color: var(--text); font: 500 13px/1.6 var(--mono); }
+    .cert-open { margin-top: auto; padding-top: 18px; color: var(--faint); font: 10px var(--mono); }
+    .cert-trigger:hover .cert-open, .cert-trigger:focus-visible .cert-open { color: var(--accent); }
+    .certificate-dialog { width: min(1000px, calc(100% - 32px)); max-width: none; max-height: calc(100% - 32px); padding: 18px; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+    .certificate-dialog::backdrop { background: rgba(0, 0, 0, .82); }
+    .certificate-dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+    .certificate-dialog-head h3 { margin: 0; font: 500 13px/1.5 var(--mono); }
+    .certificate-image { display: block; width: 100%; max-height: calc(100vh - 110px); object-fit: contain; }
+    .certificate-close { flex: 0 0 auto; font-size: 21px; }
+    .presentation-dialog { width: min(1100px, calc(100vw - 32px)); max-width: none; max-height: calc(100% - 32px); padding: 18px; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+    .presentation-dialog::backdrop { background: rgba(0, 0, 0, .82); }
+    .presentation-dialog .certificate-dialog-head h3 { flex: 1 1 100%; min-width: 0; overflow-wrap: anywhere; }
+    .presentation-download { flex: 0 0 auto; color: var(--accent); text-decoration: none; font: 500 10px var(--mono); }
+    .presentation-download:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .presentation-frame { display: block; width: 100%; height: min(72vh, 820px); border: 0; background: #fff; }
     .education-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .education-card { padding: 23px; }
     .education-card h3 { margin: 0 0 7px; font: 500 15px var(--mono); }
@@ -131,12 +147,23 @@
     .project-card h3 { margin: 23px 0 9px; font: 500 15px var(--mono); }
     .project-card p { margin: 0; color: var(--muted); font-size: 13px; }
     .project-card .text-link { margin-top: auto; padding-top: 18px; }
+    .project-card .presentation-trigger { width: fit-content; padding-inline: 0; border: 0; background: transparent; cursor: pointer; }
     .todo { color: var(--accent); font: 10px var(--mono); }
     .language-list { display: flex; flex-wrap: wrap; gap: 10px; }
     .language { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); background: var(--surface); font: 12px var(--mono); }
     .language::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent-dim); }
     .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: start; }
     .contact-copy p { max-width: 400px; color: var(--muted); }
+    .recruiter-profile { margin-bottom: 24px; padding: 21px; }
+    .recruiter-profile > .profile-label { margin: 0 0 10px; color: var(--accent); font: 500 10px var(--mono); }
+    .recruiter-profile h3 { margin: 0 0 5px; font: 500 18px/1.45 var(--mono); }
+    .recruiter-profile > .profile-headline { margin: 0 0 14px; color: var(--text); font: 12px/1.6 var(--mono); }
+    .recruiter-profile > .profile-summary { margin: 0; font-size: 13px; }
+    .profile-block { margin-top: 17px; }
+    .profile-block h4 { margin: 0 0 9px; color: var(--faint); font: 500 10px var(--mono); }
+    .profile-education p { margin: 0 0 10px; font-size: 12px; }
+    .profile-education p:last-child { margin-bottom: 0; }
+    .profile-education strong { color: var(--text); font-weight: 500; }
     .contact-email { display: inline-block; margin: 8px 0 22px; color: var(--accent); font: 500 clamp(14px, 2vw, 17px) var(--mono); text-decoration: none; overflow-wrap: anywhere; }
     .social-links { display: flex; flex-wrap: wrap; gap: 9px; }
     .social-links a { padding: 8px 10px; border: 1px solid var(--line); color: var(--muted); text-decoration: none; font: 11px var(--mono); transition: border-color .2s, color .2s; }
